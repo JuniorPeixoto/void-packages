@@ -31,7 +31,7 @@ noverifyrdeps=yes
 noshlibprovides=yes
 preserve=yes
 
-hostmakedepends="tar xz bc elfutils-devel flex gmp-devel kmod libmpc-devel
+hostmakedepends="tar lz4 xz bc elfutils-devel flex gmp-devel kmod libmpc-devel
  pkg-config openssl-devel perl uboot-mkimage cpio pahole python3 zstd"
 
 _kernver="${version/rc/0-rc}_${revision}"
