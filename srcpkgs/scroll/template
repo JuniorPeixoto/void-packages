@@ -1,0 +1,20 @@
+# Template file for 'scroll'
+pkgname=scroll
+version=0.1
+revision=1
+short_desc="Suckless scroll"
+maintainer="JuniorPeixoto <juniorpeixotofraga@gmail.com>"
+license="ISC"
+homepage="https://tools.suckless.org/scroll/"
+distfiles="https://dl.suckless.org/tools/scroll-${version}.tar.gz"
+checksum=9eb2d59ce6adf60100bd2171b0d231ddb47e274b29ded02256960a11ecceeed6
+
+do_build() {
+	[ -e ${FILESDIR}/config.h ] && cp ${FILESDIR}/config.h config.h
+	make CC="$CC" CPPFLAGS="${CPPFLAGS} -DVERSION=\\\"${version}\\\" -D_DEFAULT_SOURCE" CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS"
+}
+
+do_install() {
+	make PREFIX=/usr DESTDIR="${DESTDIR}" install
+	vinstall README 644 usr/share/doc/$pkgname
+}
